@@ -236,7 +236,9 @@ async function initHome() {
     );
   } catch (e) {
     console.error("home init error:", e);
-    homeLocationName.textContent = "📍 取得失敗";
+    if (homeLocationName) {
+      homeLocationName.textContent = "📍 取得失敗";
+    }
   }
 }
 
