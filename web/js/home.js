@@ -150,7 +150,9 @@ async function loadHomeWeather(point) {
   const forecastCode = String(point.forecast_code || "050000").padStart(6, "0");
   const amedasCode = String(point.amedas_code || "32402");
 
-  homeLocationName.textContent = `📍 ${point.name}`;
+  if (homeLocationName) {
+    homeLocationName.textContent = `📍 ${point.name}`;
+  }
 
   try {
     const forecastRes = await fetch(
@@ -168,19 +170,35 @@ async function loadHomeWeather(point) {
 
     const amedas = await getAmedasWind(amedasCode);
 
-    homeWeatherIcon.textContent = getWeatherIcon(weather);
-    homeTemp.textContent = `${temp}℃`;
+    if (homeWeatherIcon) {
+      homeWeatherIcon.textContent = getWeatherIcon(weather);
+    }
 
-    if (amedas.windSpeed === "不明" || amedas.windSpeed === "取得失敗") {
-      homeWind.textContent = `${amedas.windDirection}`;
-    } else {
-      homeWind.textContent = `${amedas.windDirection} ${amedas.windSpeed}m/s`;
+    if (homeTemp) {
+      homeTemp.textContent = `${temp}℃`;
+    }
+
+    if (homeWind) {
+      if (amedas.windSpeed === "不明" || amedas.windSpeed === "取得失敗") {
+        homeWind.textContent = `${amedas.windDirection}`;
+      } else {
+        homeWind.textContent = `${amedas.windDirection} ${amedas.windSpeed}m/s`;
+      }
     }
   } catch (e) {
     console.error("home weather error:", e);
-    homeWeatherIcon.textContent = "🌤";
-    homeTemp.textContent = "--℃";
-    homeWind.textContent = "情報なし";
+
+    if (homeWeatherIcon) {
+      homeWeatherIcon.textContent = "🌤";
+    }
+
+    if (homeTemp) {
+      homeTemp.textContent = "--℃";
+    }
+
+    if (homeWind) {
+      homeWind.textContent = "情報なし";
+    }
   }
 }
 
