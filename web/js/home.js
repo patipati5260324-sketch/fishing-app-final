@@ -3,6 +3,7 @@
 // =====================
 
 const homeLocationName = document.getElementById("homeLocationName");
+console.log(homeLocationName);
 const homeUserName = document.getElementById("homeUserName");
 const homeWeatherIcon = document.getElementById("homeWeatherIcon");
 const homeTemp = document.getElementById("homeTemp");
@@ -213,7 +214,9 @@ async function initHome() {
       return;
     }
 
-    homeLocationName.textContent = "📍 現在地取得中...";
+    if (homeLocationName) {
+      homeLocationName.textContent = "📍 現在地取得中...";
+    }
 
     navigator.geolocation.getCurrentPosition(
       async (pos) => {
