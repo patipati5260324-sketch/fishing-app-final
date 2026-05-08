@@ -1,4 +1,4 @@
-const API_BASE = "http://172.20.10.4:8000";
+const API_BASE = "https://fishing-app-final.onrender.com/";
 
 let userId = localStorage.getItem("userId");
 
