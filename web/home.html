@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>ホーム</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body class="home-dashboard-page">
+
+<main class="home-dashboard">
+
+  
+  <section class="home-action-zone">
+    <a href="./map.html" class="home-action home-action-map">
+      <span>🗺️</span>
+      <strong>マップ</strong>
+    </a>
+
+    <a href="./index.html" class="home-action home-action-list">
+      <span></span>
+      <strong>一覧</strong>
+    </a>
+
+    <a href="./post.html" class="home-action home-action-post">
+      <span>＋</span>
+      <strong>投稿</strong>
+    </a>
+  </section>
+
+</main>
+
+<script src="./js/config.js"></script>
+<script src="./js/bottomTab.js"></script>
+<script src="./js/home.js"></script>
+
+
+<script>
+  renderBottomTab("home");
+</script>
+
+<script src="./js/header.js"></script>
+<script>
+  renderGlobalHeader("🌤 釣り環境");
+</script>
+
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./service-worker.js");
+  }
+</script>
+
+</body>
+</html>

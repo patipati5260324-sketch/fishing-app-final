@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>投稿詳細</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="manifest" href="./manifest.json" />
+  <meta name="theme-color" content="#145c5e" />
+  <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+</head>
+<body>
+
+<main class="container">
+  <div id="detail"></div>
+
+  <!-- 上：いいね＋削除 -->
+  <div class="detail-actions">
+    <div class="left-actions">
+      <button id="likeBtn">❤️</button>
+    </div>
+
+    <button id="deleteBtn">削除</button>
+  </div>
+
+  <!-- 下：編集 -->
+  <a id="editLink" href="#" class="edit-btn">編集する</a>
+</main>
+
+<script src="./js/bottomTab.js"></script>
+<script>
+  renderBottomTab("home");
+</script>
+
+<script src="./js/config.js"></script>
+<script src="./js/detail.js"></script>
+
+<script src="./js/topbar.js"></script>
+<script>
+  renderTopbar("📄 投稿詳細");
+</script>
+
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./service-worker.js");
+  }
+</script>
+
+</body>
+</html>

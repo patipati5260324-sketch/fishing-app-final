@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ポイント追加</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+</head>
+<body class="app-page points-page">
+
+<main class="container">
+  <form id="pointForm" class="post-form">
+
+    <div class="select-row">
+      <select id="forecastCode" required>
+        <option value="050000">秋田県</option>
+      </select>
+
+      <select id="amedasCode" required>
+        <option value="32402">秋田</option>
+        <option value="32286">男鹿</option>
+        <option value="32276">男鹿真山</option>
+        <option value="32571">本荘</option>
+        <option value="32136">大館</option>
+      </select>
+    </div>
+
+    <input type="text" id="pointName" placeholder="ポイント名" required />
+    <input type="text" id="description" placeholder="説明" />
+    <input type="hidden" id="lat" required />
+    <input type="hidden" id="lon" required />
+
+    <div class="btn-row">
+      <button type="button" id="getLocationBtn" class="btn-secondary">
+        現在地
+      </button>
+
+      <button type="submit" class="btn-primary">
+        ポイント追加
+      </button>
+
+      <a href="./point-list.html" class="btn-primary point-list-btn">
+        一覧
+      </a>
+      
+    </div>
+  </form>
+
+  <p class="empty-message" style="margin-top:16px;">
+    地図をクリックしても座標を入力できます
+  </p>
+  <div id="pointMap"></div>
+
+
+</main>
+<script src="./js/config.js"></script>
+
+<script src="./js/bottomTab.js"></script>
+<script>
+  renderBottomTab("admin");
+</script>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="./js/points.js"></script>
+
+<script src="./js/header.js"></script>
+<script>
+  renderGlobalHeader("📍 ポイント追加");
+</script>
+
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./service-worker.js");
+  }
+</script>
+
+</body>
+</html>

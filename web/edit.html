@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>投稿編集</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body class="app-page edit-page">
+
+<main class="container">
+  <form id="editForm" class="post-form">
+    <input type="text" id="fish" placeholder="魚の名前" required />
+    <input type="number" id="size" placeholder="サイズ(cm)" required />
+    <input type="text" id="place" placeholder="場所" required />
+    <button type="submit">更新する</button>
+  </form>
+</main>
+
+<script src="./js/bottomTab.js"></script>
+<script>
+  renderBottomTab("home");
+</script>
+
+<script src="./js/config.js"></script>
+<script src="./js/edit.js"></script>
+
+<script src="./js/header.js"></script>
+<script>
+  renderGlobalHeader("✏️ 投稿編集");
+</script>
+
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./service-worker.js");
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>釣果一覧</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="manifest" href="./manifest.json" />
+  <meta name="theme-color" content="#145c5e" />
+  <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+</head>
+
+<body class="app-page list-page">
+
+  <main class="container">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="魚名や場所で検索" />
+    </div>
+
+    <div class="filter-box">
+      <button id="showAllBtn">全投稿</button>
+      <button id="showMineBtn">自分の投稿</button>
+    </div>
+    <div id="posts" class="posts-grid"></div>
+
+    <div id="posts" class="posts-grid"></div>
+  </main>
+
+
+<a href="./post.html" class="fab">＋</a>
+
+<script src="./js/config.js"></script>
+<script src="./js/index.js"></script>
+<script src="./js/bottomTab.js"></script>
+<script src="./js/header.js"></script>
+
+<script>
+  renderGlobalHeader("🏠 ホーム");
+  renderBottomTab("list");
+</script>
+
+
+</body>
+</html>
+

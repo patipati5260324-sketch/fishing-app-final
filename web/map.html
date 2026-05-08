@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>釣果マップ</title>
+  <link rel="stylesheet" href="./css/style.css" />
+
+  <!-- Leaflet -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"
+  />
+  <link rel="manifest" href="./manifest.json" />
+  <meta name="theme-color" content="#145c5e" />
+  <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+</head>
+<body class="app-page map-page">
+  <div id="map"></div>
+  <main class="container map-container">
+    <p id="mapStatus" class="empty-message">地図データを読み込み中...</p>
+    
+  </main>
+
+<script src="./js/bottomTab.js"></script>
+<script>
+  renderBottomTab("map");
+</script>
+
+  <script src="./js/config.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+  <script src="./js/map.js"></script>
+
+<script src="./js/header.js"></script>
+<script>
+  renderGlobalHeader("🗺 マップ");
+</script>
+
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./service-worker.js");
+  }
+</script>
+
+</body>
+</html>

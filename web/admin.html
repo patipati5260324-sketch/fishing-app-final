@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>管理</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body class="app-page admin-page">
+
+<!-- =======================
+  下タブ
+======================= -->
+<script src="./js/bottomTab.js"></script>
+<script>
+  renderBottomTab("admin");
+</script>
+<!-- =======================
+  JS
+======================= -->
+
+<script src="./js/config.js"></script>
+
+<!-- =======================
+  ヘッダー
+======================= -->
+<script src="./js/header.js"></script>
+<script>
+  renderGlobalHeader("⚙️ 管理");
+</script>
+
+<!-- =======================
+  メイン
+======================= -->
+<main class="container">
+
+  <div class="admin-card-list">
+
+    <!-- ポイント管理 -->
+    <a href="./points.html" class="admin-card-link">
+      <div class="admin-card">
+        <h2>📍 ポイント管理</h2>
+        <p>釣りポイントの追加・編集</p>
+      </div>
+    </a>
+
+    <!-- ユーザー管理 -->
+    <a href="./users.html" class="admin-card-link" id="usersAdminLink">
+      <div class="admin-card">
+        <p class="user-admin-note">ユーザーの確認・管理</p>
+        <p>管理者のみユーザー追加・管理できます</p>
+      </div>
+    </a>
+
+
+    <div class="sns-row">
+
+        <a href="https://instagram.com/akita_ufishing/" target="_blank" class="admin-card-link">
+          <div class="admin-card sns-card instagram-card">
+            <h2>
+              <svg class="sns-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5zM12 7.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zm4.75-3.15a1.1 1.1 0 1 1-1.1 1.1 1.1 1.1 0 0 1 1.1-1.1z"/>
+              </svg>
+              Instagram
+            </h2>
+            <p>公式Instagramを見る</p>
+          </div>
+        </a>
+
+        <a href="https://x.com/akita_ufishing/" target="_blank" class="admin-card-link">
+          <div class="admin-card sns-card x-card">
+            <h2>
+              <svg class="sns-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M18.244 2H21l-6.5 7.43L22 22h-6.828l-5.34-7.03L3.5 22H1l7.03-8.03L2 2h6.828l4.84 6.39L18.244 2zm-2.4 18h1.89L7.16 4H5.16l10.684 16z"/>
+              </svg>
+              X
+            </h2>
+            <p>公式Xを見る</p>
+          </div>
+        </a>
+
+    </div>
+
+    <!-- ログアウト -->
+    <button type="button" id="logoutBtn" class="admin-card logout-card">
+      <h2>🚪 ログアウト</h2>
+      <p>現在のユーザーからログアウトします</p>
+    </button>
+
+  </div>
+
+</main>
+
+
+<script src="./js/admin.js"></script>
+
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./service-worker.js");
+  }
+</script>
+
+</body>
+</html>

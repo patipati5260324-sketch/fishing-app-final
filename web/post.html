@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>投稿</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="manifest" href="./manifest.json" />
+  <meta name="theme-color" content="#145c5e" />
+  <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+</head>
+
+<body class="app-page post-page">
+  
+  <main class="container">
+    <form id="postForm" class="post-form">
+      <label>釣った日時</label>
+      <input type="datetime-local" id="fishingDateTime" />
+      <input type="text" id="fish" placeholder="魚の名前" required />
+      <input type="number" id="size" placeholder="サイズ(cm)" required />
+      
+      <select id="pointSelect">
+        <option value="">ポイントを選択</option>
+      </select>
+
+      <input type="text" id="place" placeholder="場所" required />
+      <input type="hidden" id="lat" required />
+      <input type="hidden" id="lon" required />
+      <input type="file" id="image" accept="image/*" required />
+
+      <button type="button" id="getLocation">📍 現在地取得</button>
+
+      <p id="locationText">位置情報: 未取得</p>
+      <p id="postMessage"></p>
+
+      <button type="submit">投稿する</button>
+    </form>
+  </main>
+
+<script src="./js/bottomTab.js"></script>
+<script>
+  renderBottomTab("home");
+</script>
+
+<script src="./js/config.js"></script>
+<script src="./js/post.js"></script>
+
+<script src="./js/header.js"></script>
+<script>
+  renderGlobalHeader("➕ 投稿<");
+</script>
+
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./service-worker.js");
+  }
+</script>
+
+</body>
+</html>

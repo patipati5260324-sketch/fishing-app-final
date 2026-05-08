@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>釣り環境</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="manifest" href="./manifest.json" />
+  <meta name="theme-color" content="#145c5e" />
+  <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+</head>
+<body class="app-page weather-page">
+
+<main class="container">
+  <div class="weather-top-actions">
+    <button id="useCurrentLocationBtn" class="location-btn">📍 現在地で見る</button>
+    <p id="locationStatus"></p>
+  </div>
+
+  <main class="container">
+    <div class="post-form">
+      <label for="weatherPointSelect">ポイント選択</label>
+      <select id="weatherPointSelect">
+        <option value="">ポイントを選択</option>
+      </select>
+
+      <button type="button" id="reloadWeatherBtn">更新</button>
+    </div>
+
+    <div style="margin-top: 20px;">
+      <h2 id="areaName">ポイントを選択してください</h2>
+      <p id="reportTime" class="post-meta"></p>
+    </div>
+    <div id="weatherBox" class="weather-scroll"></div>
+    <p id="adviceText" style="display:none;"></p>
+
+  </main>
+
+<script src="./js/bottomTab.js"></script>
+<script src="./js/config.js"></script>
+
+<script src="./js/weather.js"></script>
+
+<script src="./js/header.js"></script>
+<script>
+  renderGlobalHeader("🌤 釣り環境");
+</script>
+
+<script>
+  renderBottomTab("weather");
+</script>
+
+
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./service-worker.js");
+  }
+</script>
+
+</body>
+</html>

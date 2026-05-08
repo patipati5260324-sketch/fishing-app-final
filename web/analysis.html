@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script>
+    // PWAモード（スタンドアロン）で起動している場合のみ実行
+    if (("standalone" in window.navigator) && window.navigator.standalone) {
+      document.addEventListener("click", function(event) {
+        let element = event.target;
+      
+        // クリックされた要素が <a> タグかチェック（親要素も遡る）
+        while (element && element.tagName !== "A") {
+          element = element.parentNode;
+        }
+
+        if (element && element.tagName === "A" && element.href && !element.hasAttribute("target")) {
+          event.preventDefault(); // Safariが開くのを阻止
+          window.location = element.href; // アプリ内でURLを書き換える
+        }
+      }, false);
+    }
+  </script>
+  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>分析</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="manifest" href="./manifest.json" />
+  <meta name="theme-color" content="#145c5e" />
+  <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+
+</head>
+<body class="app-page analysis-page">
+
+<main class="container">
+
+  <div class="analysis-header">
+    <h2>ポイント別の傾向</h2>
+    <p>投稿履歴から、その場所で釣れやすい条件を見やすく表示します。</p>
+  </div>
+
+  <!-- ポイント選択 -->
+  <div class="search-box">
+    <select id="analysisPointSelect"></select>
+  </div>
+
+  <!-- 分析結果 -->
+  <div id="analysisResult"></div>
+
+</main>
+
+<script src="./js/bottomTab.js"></script>
+<script>
+  renderBottomTab("analysis");
+</script>
+
+<script src="./js/config.js"></script>
+<script src="./js/analysis.js"></script>
+
+<script src="./js/header.js"></script>
+<script>
+  renderGlobalHeader("📊 分析");
+</script>
+
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./service-worker.js");
+  }
+</script>
+
+</body>
+</html>

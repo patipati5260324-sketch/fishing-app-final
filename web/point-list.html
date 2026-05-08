@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ポイント一覧</title>
+  <link rel="stylesheet" href="./css/style.css" />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  />
+</head>
+
+<body class="app-page point-list-page">
+
+<main class="container point-list-container">
+
+  <section class="point-list-hero">
+
+    <div class="point-list-header">
+      <a href="./points.html" class="back-btn">❮</a>
+      <h2>釣りポイント</h2>
+    </div>
+    <p>登録済みのポイントを選択すると、地図にピンを表示します</p>
+
+    <select id="pointSelectForMap">
+      <option value="">ポイントを選択</option>
+    </select>
+
+    <button type="button" id="deleteSelectedPointBtn" class="delete-point-btn" disabled>
+      選択中のポイントを削除
+    </button>
+  </section>
+
+  <div id="pointListMap"></div>
+
+</main>
+ 
+<script src="./js/config.js"></script>
+<script src="./js/bottomTab.js"></script>
+<script>
+  renderBottomTab("admin");
+</script>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="./js/point-list.js"></script>
+
+<script src="./js/header.js"></script>
+<script>
+  renderGlobalHeader("📍 ポイント一覧");
+</script>
+
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./service-worker.js");
+  }
+</script>
+
+</body>
+</html>

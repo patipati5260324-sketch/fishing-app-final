@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ユーザー管理</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body class="scroll-page app-page users-page">
+
+<main class="container">
+  <h2>ユーザー追加</h2>
+  <form id="userForm" class="post-form">
+    <input type="text" id="studentId" placeholder="学籍番号" required />
+    <input type="text" id="userName" placeholder="名前" required />
+    <button type="submit">追加する</button>
+  </form>
+
+  <h2 style="margin-top: 24px;">一覧</h2>
+  <div id="usersList"></div>
+</main>
+
+<script src="./js/bottomTab.js"></script>
+<script>
+  renderBottomTab("admin");
+</script>
+
+<script src="./js/config.js"></script>
+<script src="./js/users.js"></script>
+
+<script src="./js/header.js"></script>
+<script>
+  renderGlobalHeader("👤 ユーザー管理");
+</script>
+
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./service-worker.js");
+  }
+</script>
+
+</body>
+</html>
