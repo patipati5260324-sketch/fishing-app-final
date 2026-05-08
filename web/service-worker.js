@@ -1,4 +1,4 @@
-const CACHE_NAME = "fishing-app-v3";
+const CACHE_NAME = "fishing-app-v5";
 
 const STATIC_FILES = [
   "./",
