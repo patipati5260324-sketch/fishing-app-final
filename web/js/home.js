@@ -202,7 +202,9 @@ async function initHome() {
     const points = await res.json();
 
     if (!points.length) {
-      homeLocationName.textContent = "📍 ポイントなし";
+      if (homeLocationName) {
+        homeLocationName.textContent = "📍 ポイントなし";
+      }
       return;
     }
 
