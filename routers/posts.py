@@ -3,6 +3,8 @@ from database import get_conn
 from datetime import datetime
 import shutil
 import os
+import cloudinary
+import cloudinary.uploader
 
 router = APIRouter(
     prefix="/posts",
@@ -31,10 +33,7 @@ def read_posts(request: Request):
 
     result = []
     for r in rows:
-        image_url = str(
-            request.url_for(
-                "uploads",
-                path=os.path.basename(r[4])
+        image_url = r[4]
             )
         )
 
@@ -85,13 +84,12 @@ def create_post(
     conn = get_conn()
     cur = conn.cursor()
 
-    filename = f"{datetime.now().strftime('%Y%m%d%H%M%S')}_{image.filename}"
+    upload_result = cloudinary.uploader.upload(
+        image.file,
+        folder="fishing_posts"
+    )
 
-    file_save_path = os.path.join(UPLOAD_DIR, filename)   # 実際に保存する場所
-    db_image_path = f"uploads/{filename}"                 # DBに保存する文字列
-
-    with open(file_save_path, "wb") as buffer:
-        shutil.copyfileobj(image.file, buffer)
+    db_image_path = upload_result["secure_url"]
 
     created_at = fishing_datetime if fishing_datetime else datetime.now().isoformat()
 
@@ -143,12 +141,7 @@ def get_posts_map(request: Request):
             "place": r[3],
             "lat": r[4],
             "lon": r[5],
-            "image_url": str(
-                request.url_for(
-                    "uploads",
-                    path=os.path.basename(r[6])
-                )
-            ),
+            "image_url": r[6],
         }
         for r in rows
     ]
@@ -182,12 +175,7 @@ def get_post(post_id: int, request: Request):
         "fish": data["fish"],
         "size": data["size"],
         "place": data["place"],
-        "image_url": str(
-            request.url_for(
-                "uploads",
-                path=os.path.basename(data["image_path"])
-            )
-        ),
+        "image_url": data["image_path"],
         "lat": data["lat"],
         "lon": data["lon"],
         "created_at": data["created_at"],
