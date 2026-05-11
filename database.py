@@ -1,14 +1,30 @@
-from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
 import sqlite3
+import os
+from sqlalchemy import create_engine
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+# PostgreSQL
+if DATABASE_URL and DATABASE_URL.startswith("postgres"):
+    engine = create_engine(DATABASE_URL)
+
+# ローカルSQLite（開発用）
+else:
+    DATABASE_URL = "sqlite:///./fishing.db"
+
+    engine = create_engine(
+        DATABASE_URL,
+        connect_args={"check_same_thread": False}
+    )
+
+def get_conn():
+    return engine.connect()
+
 
 DB = "fishing.db"
 
-def get_conn():
-    return sqlite3.connect(DB)
-
-DATABASE_URL = "sqlite:///./fishing.db"
 
 def init_db():
     conn = get_conn()
@@ -75,10 +91,6 @@ def init_db():
     conn.commit()
     conn.close()
 
-engine = create_engine(
-    DATABASE_URL,
-    connect_args={"check_same_thread": False}
-)
 
 SessionLocal = sessionmaker(
     autocommit=False,
